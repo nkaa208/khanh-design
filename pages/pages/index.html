@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vercel Card - Nam Khánh</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #f0f0f0, #d1d5db);
+    }
+    .tilt {
+      transform-style: preserve-3d;
+      transition: transform 0.2s ease;
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+  <div id="card" class="tilt w-full max-w-sm bg-white rounded-2xl shadow-2xl p-6 text-center border border-gray-200">
+    <img src="avatar.jpg" alt="Avatar"
+      class="w-28 h-28 mx-auto rounded-full border-4 border-white shadow-lg hover:scale-105 transition-transform duration-300" />
+    <h1 class="text-2xl font-bold mt-4 text-gray-800">Bùi Đình Nam Khánh</h1>
+    <p class="text-gray-500 mb-4">Sinh viên Thiết kế đồ họa</p>
+
+    <div class="text-gray-700 text-sm mb-4 space-y-1">
+      <p>📞 0828028966</p>
+      <p>📧 nkhanh130820@gmail.com</p>
+    </div>
+
+    <div class="flex justify-center space-x-6">
+      <a href="https://facebook.com" target="_blank" class="text-blue-600 font-medium hover:underline hover:text-blue-800">Facebook</a>
+      <a href="https://instagram.com" target="_blank" class="text-pink-500 font-medium hover:underline hover:text-pink-700">Instagram</a>
+    </div>
+  </div>
+
+  <script>
+    // Hiệu ứng nghiêng đơn giản
+    const card = document.getElementById("card");
+
+    card.addEventListener("mousemove", (e) => {
+      const { width, height, left, top } = card.getBoundingClientRect();
+      const x = e.clientX - left - width / 2;
+      const y = e.clientY - top - height / 2;
+      const rotateX = (-y / height) * 20;
+      const rotateY = (x / width) * 20;
+      card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    card.addEventListener("mouseleave", () => {
+      card.style.transform = "rotateX(0) rotateY(0)";
+    });
+  </script>
+</body>
+</html>
